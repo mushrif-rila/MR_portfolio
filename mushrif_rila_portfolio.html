@@ -563,7 +563,9 @@
   .timeline::before {
     content: '';
     position: absolute;
-    left: 0; top: 0; bottom: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, var(--accent), transparent);
   }
@@ -579,22 +581,28 @@
     position: absolute;
     left: -2rem;
     top: 6px;
-    width: 10px; height: 10px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 10px rgba(0,212,255,0.5);
     transform: translateX(-4.5px);
   }
 
+  /* HEADER LAYOUT FIX */
   .timeline-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 0.5rem;
     gap: 1rem;
-    flex-wrap: wrap;
   }
 
+  .timeline-header > div {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  /* ROLE */
   .timeline-role {
     font-family: var(--font-head);
     font-weight: 700;
@@ -602,23 +610,40 @@
     color: var(--text);
   }
 
+  /* COMPANY + LOGO */
   .timeline-company {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--accent);
     font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 0.3rem;
   }
 
+  .company-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    background: #fff;
+    padding: 2px;
+    border-radius: 4px;
+  }
+
+  /* DATE ALIGNMENT FIX */
   .timeline-period {
+    width: 170px;
+    text-align: right;
     font-size: 0.78rem;
     color: var(--text3);
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 0.2rem 0.6rem;
+    padding: 0.25rem 0.6rem;
     border-radius: 100px;
     white-space: nowrap;
   }
 
+  /* DUTIES */
   .timeline-duties {
     list-style: none;
     margin-top: 0.6rem;
@@ -1188,33 +1213,48 @@
         <p>Highly motivated to apply advanced and emerging technologies to modern power systems and electrical engineering applications, with a research-oriented mindset and a drive for continuous learning.</p>
       </div>
       <div class="about-highlights reveal">
-        <div class="highlight-card">
+                <div class="highlight-card">
           <div class="highlight-icon"><i class="fas fa-bolt"></i></div>
           <div>
-            <h4>Power Systems Expert</h4>
-            <p>Load flow studies, fault analysis, protection, and smart grid technologies using PSS/E and PSCAD.</p>
+            <h4>Power Systems</h4>
+            <p>Load flow studies, fault analysis, protection coordination, and smart grid technologies using PSS/E and PSCAD.</p>
           </div>
         </div>
-        <div class="highlight-card">
-          <div class="highlight-icon"><i class="fas fa-sun"></i></div>
-          <div>
-            <h4>Renewable Energy</h4>
-            <p>Solar PV design, BESS, microgrid control, grid-forming inverters, and MPPT algorithms.</p>
+
+        <div class="about-highlights reveal">
+
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-drafting-compass"></i></div>
+            <div>
+              <h4>Electrical Designing</h4>
+              <p>Electrical schematics, panel design, single-line diagrams (SLD), load calculations, cable sizing, and protection system design following industry standards.</p>
+            </div>
           </div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-icon"><i class="fas fa-brain"></i></div>
-          <div>
-            <h4>AI &amp; Machine Learning</h4>
-            <p>LSTM-based load forecasting, SOC estimation with Random Forest, neural networks for energy systems.</p>
+
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-sun"></i></div>
+            <div>
+              <h4>Renewable Energy</h4>
+              <p>Solar PV design, BESS, microgrid control, grid-forming inverters, and MPPT algorithms.</p>
+            </div>
           </div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-icon"><i class="fas fa-microchip"></i></div>
-          <div>
-            <h4>Embedded &amp; Electronics</h4>
-            <p>PCB design (Altium, KiCad), embedded C/C++, hardware prototyping, and microcontrollers.</p>
+
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-brain"></i></div>
+            <div>
+              <h4>AI &amp; Machine Learning</h4>
+              <p>LSTM-based load forecasting, SOC estimation with Random Forest, and neural networks for energy systems.</p>
+            </div>
           </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-microchip"></i></div>
+            <div>
+              <h4>Embedded &amp; Electronics</h4>
+              <p>PCB design (Altium, KiCad), embedded C/C++, hardware prototyping, and microcontroller-based systems.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1260,6 +1300,94 @@
           Qualified for university entrance in Physical Science stream with strong performance across all subjects.
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Work History</div>
+    <h2 class="section-title reveal">Experience</h2>
+
+    <div class="timeline">
+
+      <!-- IPD -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Graduate Engineering Trainee</div>
+            <div class="timeline-company">
+              <img src="IPD.jpg" class="company-logo" alt="IPD Logo">
+              IPD Colombo
+            </div>
+          </div>
+          <span class="timeline-period">Feb 2026 – Present</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Worked with power distribution and protective devices including MCB, MCCB, ACB, and contactors.</li>
+          <li>Handled energy management and power quality devices such as multifunction meters and current transformers.</li>
+          <li>Engaged in control and automation systems using PLCs, motor starters, HMIs, and sensors.</li>
+        </ul>
+      </div>
+
+      <!-- UNIVERSITY -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Student Instructor</div>
+            <div class="timeline-company">
+              <img src="Department of Electrical and Information.png" class="company-logo" alt="DEIE Logo">
+              Dept. of Electrical & Information Engineering, University of Ruhuna
+            </div>
+          </div>
+          <span class="timeline-period">Apr 2025 – Dec 2025</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Conducted laboratory practical sessions for the Electrical Machines module.</li>
+          <li>Practicals: Synchronous generator parameter determination, torque-speed characteristics of three-phase induction motors, parallel operation of transformers, output characteristics of DC machines.</li>
+        </ul>
+      </div>
+
+      <!-- LECO -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Electrical & Electronics Engineering Trainee</div>
+            <div class="timeline-company">
+              <img src="LECO.png" class="company-logo" alt="LECO Logo">
+              Lanka Electricity Company (Pvt) Ltd — LECO
+            </div>
+          </div>
+          <span class="timeline-period">Nov 2024 – Feb 2025</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Contributed to R&D on smart meters and inverter systems focusing on embedded electronics and power semiconductors.</li>
+          <li>Assisted in transformer testing and performance evaluation.</li>
+          <li>Hands-on experience in LV distribution network monitoring using network monitoring devices for fault detection and power quality analysis.</li>
+        </ul>
+      </div>
+
+      <!-- RAILWAYS -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Electrical & Electronics Engineering Trainee</div>
+            <div class="timeline-company">
+              <img src="Railway.png" class="company-logo" alt="Railways Logo">
+              Sri Lanka Railways
+            </div>
+          </div>
+          <span class="timeline-period">Oct 2023 – Jan 2024</span>
+        </div>
+        <ul class="timeline-duties">
+          <li>Worked with BLDC, single-phase induction, and traction motors across railway applications; supported testing and maintenance.</li>
+          <li>Strengthened knowledge in power electronics, control systems, and track-circuit data transmission.</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
