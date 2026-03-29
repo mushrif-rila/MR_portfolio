@@ -412,13 +412,13 @@
 
   /* EDUCATION */
   #education { background: var(--bg); }
-
+  
   .edu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
-
+  
   .edu-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -428,12 +428,12 @@
     overflow: hidden;
     transition: border-color 0.2s, transform 0.25s;
   }
-
+  
   .edu-card:hover {
     border-color: var(--accent);
     transform: translateY(-4px);
   }
-
+  
   .edu-card::before {
     content: '';
     position: absolute;
@@ -441,35 +441,66 @@
     height: 3px;
     background: linear-gradient(90deg, var(--accent), transparent);
   }
-
+  
+  /* Logo styling - positioned in top-right corner */
+  .edu-logo {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 55px;
+    height: auto;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 4px;
+    object-fit: contain;
+  }
+  
+  .edu-logo:hover {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  
+  /* Optional: if you prefer logo inline with institution name, use this class instead */
+  .edu-institution-logo {
+    width: 28px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+    border-radius: 4px;
+  }
+  
   .edu-degree {
     font-family: var(--font-head);
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--text);
     margin-bottom: 0.3rem;
+    padding-right: 60px; /* Prevents text overlap with absolute logo */
   }
-
+  
   .edu-institution {
     font-size: 0.9rem;
     color: var(--accent);
     font-weight: 500;
     margin-bottom: 0.2rem;
+    padding-right: 60px;
   }
-
+  
   .edu-period {
     font-size: 0.8rem;
     color: var(--text3);
     margin-bottom: 1rem;
   }
-
+  
   .edu-meta {
     display: flex;
     gap: 0.8rem;
     flex-wrap: wrap;
     margin-bottom: 1rem;
   }
-
+  
   .badge {
     background: var(--accent-glow);
     border: 1px solid rgba(0,212,255,0.2);
@@ -479,19 +510,19 @@
     padding: 0.25rem 0.65rem;
     border-radius: 100px;
   }
-
+  
   .badge-amber {
     background: rgba(245,158,11,0.1);
     border-color: rgba(245,158,11,0.25);
     color: var(--amber);
   }
-
+  
   .edu-coursework {
     font-size: 0.82rem;
     color: var(--text2);
     line-height: 1.6;
   }
-
+  
   .edu-coursework strong {
     color: var(--text);
     display: block;
@@ -499,6 +530,26 @@
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .edu-grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    .edu-card {
+      padding: 1.5rem;
+    }
+    .edu-logo {
+      width: 45px;
+      top: 1rem;
+      right: 1rem;
+    }
+    .edu-degree,
+    .edu-institution {
+      padding-right: 50px;
+    }
   }
 
   /* EXPERIENCE */
@@ -1178,7 +1229,9 @@
     <div class="section-label">Academic Background</div>
     <h2 class="section-title reveal">Education</h2>
     <div class="edu-grid">
+      <!-- University Card -->
       <div class="edu-card reveal">
+        <img src="1.University_of_Ruhuna_logo.png" alt="University of Ruhuna Logo" class="edu-logo">
         <div class="edu-degree">BSc (Hons) in Engineering — Electrical and Information Engineering</div>
         <div class="edu-institution">University of Ruhuna, Galle, Sri Lanka</div>
         <div class="edu-period">2021 – 2025</div>
@@ -1191,13 +1244,15 @@
           Power Systems · Electric Machines · Power Electronics · Control System Design · Electrical Installation · High Voltage Engineering · Robotics and Automation · Intelligent System Design
         </div>
       </div>
+      <!-- School Card -->
       <div class="edu-card reveal">
+        <img src="2.Royal College.jfif" alt="Royal College Logo" class="edu-logo">
         <div class="edu-degree">G.C.E. A/L — Physical Science Stream</div>
         <div class="edu-institution">Royal College, Colombo 07</div>
         <div class="edu-period">2017 – 2019</div>
         <div class="edu-meta">
           <span class="badge">AABA</span>
-          <span class="badge badge-amber">Z-Score: 1.9905.</span>
+          <span class="badge badge-amber">Z-Score: 1.9905</span>
         </div>
         <div class="edu-coursework">
           <strong>Stream</strong>
@@ -1205,77 +1260,6 @@
           Qualified for university entrance in Physical Science stream with strong performance across all subjects.
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label">Work History</div>
-    <h2 class="section-title reveal">Experience</h2>
-    <div class="timeline">
-
-      <div class="timeline-item reveal">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Graduate Engineering Trainee</div>
-            <div class="timeline-company">IPD Colombo</div>
-          </div>
-          <span class="timeline-period">Feb 2026 – Present</span>
-        </div>
-        <ul class="timeline-duties">
-          <li>Worked with power distribution and protective devices including MCB, MCCB, ACB, and contactors.</li>
-          <li>Handled energy management and power quality devices such as multifunction meters and current transformers.</li>
-          <li>Engaged in control and automation systems using PLCs, motor starters, HMIs, and sensors.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Student Instructor</div>
-            <div class="timeline-company">Dept. of Electrical &amp; Information Engineering, University of Ruhuna</div>
-          </div>
-          <span class="timeline-period">Apr 2025 – Dec 2025</span>
-        </div>
-        <ul class="timeline-duties">
-          <li>Conducted laboratory practical sessions for the Electrical Machines module.</li>
-          <li>Practicals: Synchronous generator parameter determination, torque-speed characteristics of three-phase induction motors, parallel operation of transformers, output characteristics of DC machines.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Electrical &amp; Electronics Engineering Trainee</div>
-            <div class="timeline-company">Lanka Electricity Company (Pvt) Ltd — LECO</div>
-          </div>
-          <span class="timeline-period">Nov 2024 – Feb 2025</span>
-        </div>
-        <ul class="timeline-duties">
-          <li>Contributed to R&amp;D on smart meters and inverter systems focusing on embedded electronics and power semiconductors.</li>
-          <li>Assisted in transformer testing and performance evaluation.</li>
-          <li>Hands-on experience in LV distribution network monitoring using network monitoring devices for fault detection and power quality analysis.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Electrical &amp; Electronics Engineering Trainee</div>
-            <div class="timeline-company">Sri Lanka Railways</div>
-          </div>
-          <span class="timeline-period">Oct 2023 – Jan 2024</span>
-        </div>
-        <ul class="timeline-duties">
-          <li>Worked with BLDC, single-phase induction, and traction motors across railway applications; supported testing and maintenance.</li>
-          <li>Strengthened knowledge in power electronics, control systems, and track-circuit data transmission.</li>
-        </ul>
-      </div>
-
     </div>
   </div>
 </section>
