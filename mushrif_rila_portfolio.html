@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+  /* ----- BASE THEME VARIABLES (CYAN / DEFAULT) ----- */
   :root {
     --bg: #0a0d12;
     --bg2: #111520;
@@ -24,16 +25,92 @@
     --text: #e8edf5;
     --text2: #8896a8;
     --text3: #566070;
+    --btn-cv-bg: transparent;
+    --btn-cv-border: var(--border);
+    --btn-cv-color: var(--text);
+    --btn-linkedin-bg: #0a66c2;
+    --btn-linkedin-color: #ffffff;
+    --btn-researchgate-bg: #00cc88;
+    --btn-researchgate-color: #0a0d12;
+    --btn-hover-transform: translateY(-2px);
     --font-head: 'Syne', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --radius: 12px;
     --radius-lg: 20px;
   }
 
+  /* ----- THEME: AMBER ----- */
+  body.theme-amber {
+    --bg: #0f0c08;
+    --bg2: #18130c;
+    --bg3: #221c14;
+    --surface: #261f16;
+    --surface2: #33281d;
+    --border: rgba(245,158,11,0.2);
+    --accent: #f59e0b;
+    --accent2: #d97706;
+    --accent-glow: rgba(245,158,11,0.2);
+    --text: #fef3c7;
+    --text2: #d4c5a5;
+    --text3: #a08c6f;
+    --btn-linkedin-bg: #c2410c;
+    --btn-linkedin-color: #ffedd5;
+    --btn-researchgate-bg: #b45309;
+    --btn-researchgate-color: #fff7ed;
+    --btn-cv-bg: transparent;
+    --btn-cv-border: rgba(245,158,11,0.4);
+    --btn-cv-color: var(--accent);
+  }
+
+  /* ----- THEME: LIGHT MINT ----- */
+  body.theme-mint {
+    --bg: #eef6f0;
+    --bg2: #e0ede4;
+    --bg3: #d4e4da;
+    --surface: #ffffffcc;
+    --surface2: #f0f9f0;
+    --border: rgba(59,201,163,0.35);
+    --accent: #2b9e76;
+    --accent2: #228b67;
+    --accent-glow: rgba(43,158,118,0.2);
+    --text: #1e2f2a;
+    --text2: #2f4b42;
+    --text3: #5a7a6e;
+    --btn-linkedin-bg: #1c7e5c;
+    --btn-linkedin-color: #ffffff;
+    --btn-researchgate-bg: #0e6b4f;
+    --btn-researchgate-color: #ffffff;
+    --btn-cv-bg: transparent;
+    --btn-cv-border: rgba(43,158,118,0.5);
+    --btn-cv-color: #1c6e51;
+  }
+
+  /* ----- THEME: LIGHT LAVENDER ----- */
+  body.theme-lavender {
+    --bg: #f5f2ff;
+    --bg2: #ece8ff;
+    --bg3: #e3defa;
+    --surface: #ffffffdb;
+    --surface2: #f1edff;
+    --border: rgba(128,90,255,0.3);
+    --accent: #6c5ce7;
+    --accent2: #5541d9;
+    --accent-glow: rgba(108,92,231,0.2);
+    --text: #2d2a4a;
+    --text2: #4a4570;
+    --text3: #6b6690;
+    --btn-linkedin-bg: #8b5cf6;
+    --btn-linkedin-color: #ffffff;
+    --btn-researchgate-bg: #a78bfa;
+    --btn-researchgate-color: #1e1b3b;
+    --btn-cv-bg: transparent;
+    --btn-cv-border: rgba(108,92,231,0.5);
+    --btn-cv-color: #5b4bdb;
+  }
+
+  /* GLOBAL STYLES (use variables) */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -41,9 +118,8 @@
     font-size: 16px;
     line-height: 1.7;
     overflow-x: hidden;
+    transition: background 0.3s ease, color 0.2s ease;
   }
-
-  /* NOISE TEXTURE */
   body::before {
     content: '';
     position: fixed;
@@ -53,8 +129,6 @@
     z-index: 9999;
     opacity: 0.5;
   }
-
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -68,7 +142,9 @@
     justify-content: space-between;
     height: 64px;
   }
-
+  body.theme-mint nav, body.theme-lavender nav {
+    background: rgba(255,255,255,0.8);
+  }
   .nav-logo {
     font-family: var(--font-head);
     font-weight: 800;
@@ -77,24 +153,15 @@
     letter-spacing: -0.02em;
     text-decoration: none;
   }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--text2);
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--accent); }
-
   .nav-cta {
     background: var(--accent);
     color: var(--bg) !important;
@@ -102,17 +169,50 @@
     border-radius: 6px;
     font-weight: 600 !important;
   }
-
-  .nav-cta:hover { background: var(--accent2); color: #fff !important; }
-
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 1.4rem;
-    cursor: pointer;
+  .theme-switcher {
+    display: flex;
+    gap: 8px;
+    background: var(--surface);
+    padding: 5px 10px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
   }
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--accent);
+  }
+  .theme-btn:hover { transform: scale(1.1); box-shadow: 0 0 8px currentColor; }
+  .theme-btn[data-theme="cyan"] { background: #00d4ff; box-shadow: 0 0 4px #00d4ff; }
+  .theme-btn[data-theme="amber"] { background: #f59e0b; }
+  .theme-btn[data-theme="mint"] { background: #2b9e76; }
+  .theme-btn[data-theme="lavender"] { background: #6c5ce7; }
+  .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+
+  .cycle-theme-btn {
+    background: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 0.4rem 1.2rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .cycle-theme-btn:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    transform: scale(0.98);
+  }
+
 
   /* HERO */
   #hero {
@@ -265,6 +365,52 @@
     color: var(--accent);
     transform: translateY(-2px);
   }
+
+  /* LinkedIn Button */
+.btn-linkedin {
+  background: var(--btn-linkedin-bg);
+  color: var(--btn-linkedin-color);
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-head);
+}
+
+.btn-linkedin:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ResearchGate Button */
+.btn-researchgate {
+  background: var(--btn-researchgate-bg);
+  color: var(--btn-researchgate-color);
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-head);
+}
+
+.btn-researchgate:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
   /* PHOTO CARD */
   .hero-photo-wrap {
@@ -1272,22 +1418,20 @@
   }
 </style>
 </head>
-<body>
-
+<body class="theme-cyan">
 <nav id="navbar">
   <a href="#hero" class="nav-logo">MR.</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#moments">Moments</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+    <li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#achievements">Achievements</a></li>
+    <li><a href="#moments">Moments</a></li><li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  <div class="theme-switcher">
+    <button id="cycleThemeBtn" class="cycle-theme-btn">Cyan</button>
+  </div>
+  <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
 </nav>
+
 
 <!-- HERO -->
 <section id="hero">
@@ -1303,6 +1447,8 @@
         <a href="https://drive.google.com/uc?export=download&id=1dzxej1p-S1YzUbfw6IekQO4cSXtRd2ZV" download="Mushrif_Rila_CV.pdf" class="btn-secondary">
           <i class="fas fa-download"></i> Download CV
         </a>
+        <a href="https://www.linkedin.com/in/mushrif-rila/" target="_blank" rel="noopener noreferrer" class="btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Mushrif-Rila?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" class="btn-researchgate"><i class="fab fa-researchgate"></i> ResearchGate</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -1312,6 +1458,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ABOUT -->
 <section id="about">
@@ -1943,25 +2090,37 @@
 </footer>
 
 <script>
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const navbar = document.getElementById('navbar');
-  if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      navbar.classList.toggle('open');
-      hamburger.innerHTML = navbar.classList.contains('open')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-    });
+  const themeOrder = ['cyan', 'amber', 'mint', 'lavender'];
+  const themeNames = { cyan: 'Cyan', amber: 'Amber', mint: 'Mint', lavender: 'Lavender' };
+
+  const cycleBtn = document.getElementById('cycleThemeBtn');
+
+  function setTheme(theme) {
+    document.body.classList.remove('theme-cyan', 'theme-amber', 'theme-mint', 'theme-lavender');
+    document.body.classList.add(`theme-${theme}`);
+    localStorage.setItem('portfolio-theme', theme);
+    if (cycleBtn) cycleBtn.textContent = themeNames[theme];
   }
 
-  // Close menu on link click
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      navbar.classList.remove('open');
-      if (hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-  });
+  function nextTheme() {
+    const currentTheme = localStorage.getItem('portfolio-theme') || 'cyan';
+    const currentIndex = themeOrder.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    setTheme(themeOrder[nextIndex]);
+  }
+
+  // Load saved theme or default to cyan
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  if (savedTheme && themeOrder.includes(savedTheme)) {
+    setTheme(savedTheme);
+  } else {
+    setTheme('cyan');
+  }
+
+  // Add click event
+  if (cycleBtn) {
+    cycleBtn.addEventListener('click', nextTheme);
+  }
 </script>
 </body>
 </html>
